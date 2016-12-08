@@ -10,32 +10,42 @@ and randomly select between the two players to go first.
 The player input for the board will simply be the number on the board (perhaps it should be indexed from 1-9 rather than 0-8 to prevent player confusion) with a check to make sure that input is not already filled and that the player enters a valid number and not another data type.
 =end
 
-class Player
-end
-
-class GameBoard
-	#Initialize Game Board
-	def initialize
-		@board = [0,1,2,3,4,5,6,7,8]
-	end
-	
-	#Show Game Board
-	def show
-		@board.each do |space|
-			puts "|" + space "|"
-		end
-	end
-end
-
 class Game
 	
 	def initialize
-		@gameboard = Gameboard.new
+		@board = ['','','','','','','','','']
 		@round = 1
+		@player_1 = "X"
+		@player_2 = "O"
 	end
 
-	def play
-		while @round < 9
-		end
+	#Show Game Board
+	def show_board
+		puts "| #{@board[0]} | #{@board[1]} | #{@board[2]} |"
+		puts "----------"
+		puts "| #{@board[3]} | #{@board[4]} | #{@board[6]} |"
+		puts "----------"
+		puts "| #{@board[7]} | #{@board[7]} | #{@board[8]} |"
 	end
+
+	def win?
+		@winning_positions = [
+		#Horizontal
+		[0,1,2], [3,4,5], [6,7,8],
+		#Vertical
+		#Diagnol
+		]
+		return true if 
+	end
+
+	def tie?
+	end
+
+	def no_winner?
+	end
+
 end
+
+game_1 = Game.new
+
+game_1.show_board
