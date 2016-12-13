@@ -1,51 +1,79 @@
-=begin
-Ideas for Game Design:
-1. Initiate a new game object at the bottom of the script.
-2. The new game object should allow the creation of two player objects
-from player class whose names can be designated by user input,
-initialize a new empty gameboard consisting of an array with  9 indexes,
-and randomly select between the two players to go first.
-3. The game control flow can consist of a while loop which goes for less than 10 turns (since there are only nine spaces) with checks for winning patterns.
-4. Each turn will be player input and then after each turn the 'show' method in the gameboard will initialize to show what the current board looks like.
-The player input for the board will simply be the number on the board (perhaps it should be indexed from 1-9 rather than 0-8 to prevent player confusion) with a check to make sure that input is not already filled and that the player enters a valid number and not another data type.
-=end
+module TicTacToe
+	class Game
+		def initialize
+			puts 'Welcome to Tic Tac Toe... in Ruby!'
+			@board = ['','','','','','','','','']
+			@turn = 1
+			puts 'Welcome to tic tac toe! Which mode do you wish to play?'
+			puts '1) Human vs Human'
+			puts '2) Human vs Computer'
+			puts '3) Computer vs Computer'
+			user_choice = gets.chomp.to_i
+			until [1,2,3].include? user_choice do
+				puts 'Please enter 1, 2, or 3'
+				user_choice = gets.chomp.to_i
+			end
+			if user_choice == 1
+				'Human vs Human mode chosen.'
+			elsif user_choice == 2
+				puts 'Human vs Computer mode chosen.'
+			elsif user_choice == 3
+				puts 'Computer vs Computer mode chosen.'
+			end
+			#Begin the game
+			self.play_game
+		end
 
-class Game
-	
-	def initialize
-		@board = ['','','','','','','','','']
-		@round = 1
-		@player_1 = "X"
-		@player_2 = "O"
+		#Show Game Board
+		def show_board
+			puts "| #{@board[0]} | #{@board[1]} | #{@board[2]} |"
+			puts "----------"
+			puts "| #{@board[3]} | #{@board[4]} | #{@board[6]} |"
+			puts "----------"
+			puts "| #{@board[7]} | #{@board[7]} | #{@board[8]} |"
+		end
+
+
+		def play_game
+			total_turns = 10
+			until @turn > total_turns do
+				puts "Please choose a space. Board is numbered horizontally from left to right; wth the top row as 1,2,3, the second row 4,5,6, and the last row 7, 8, and 9."
+				self.show_board
+			end
+		end
+
+		
+		#Check conditions
+		def win?
+		
+		end
+
+		def tie?
+		end
+
+		def no_winner?
+		end
+
 	end
 
-	#Show Game Board
-	def show_board
-		puts "| #{@board[0]} | #{@board[1]} | #{@board[2]} |"
-		puts "----------"
-		puts "| #{@board[3]} | #{@board[4]} | #{@board[6]} |"
-		puts "----------"
-		puts "| #{@board[7]} | #{@board[7]} | #{@board[8]} |"
+	class Player
+		#Creates a New Player
+		def initialize(symbol)
+			@symbol = symbol
+		end
 	end
 
-	def win?
-		@winning_positions = [
-		#Horizontal
-		[0,1,2], [3,4,5], [6,7,8],
-		#Vertical
-		#Diagnol
-		]
-		return true if 
+	class HumanPlayer < Player
+		def make_move
+		end
 	end
 
-	def tie?
-	end
-
-	def no_winner?
+	class ComputerPlayer < Player
 	end
 
 end
 
-game_1 = Game.new
+game_1 = TicTacToe::Game.new
 
-game_1.show_board
+
+
