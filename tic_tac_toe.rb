@@ -31,7 +31,7 @@ module TicTacToe
 				@Player_2 = ComputerPlayer.new
 			end
 			#Initialize the Board
-			@board = ['','','','','','','','','']
+			@board = [1,2,3,4,5,6,7,8,9]
 			#Player Symbol and Turn Order Assignment
 			self.player_assignment
 			#Begin the game
@@ -78,14 +78,51 @@ module TicTacToe
 		def play_game
 			#Control Flow Based on Order
 			if @player_1.order = 1
+				#Starts at Turn 1
 				turn = 1
 				while turn < 10
-					puts "Please choose a space. Board is numbered horizontally from left to right; wth the top row as 1,2,3, the second row 4,5,6, and the last row 7, 8, and 9."
 					case turn
+					#Player 1's Turn
 					when 1
+						puts "Please choose a space."
+						#Display board
+						self.show_board
+						#Take the player choice input
+						player_choice = gets.chomp.to_i
+						#Assure player choice is a valid number
+						until @board.include? player_choice do
+							puts ""
+							puts "Please enter a blank space from the board."
+							player_choice = gets.chomp.to_i
+						end
+						#Fill the space in the game board with player's symbol
+						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Increment to Next Turn
+						turn += 1
 					when 2
+						puts "Please choose a space."
+						self.show_board
+						player_choice = gets.chomp.to_i
+						until @board.include? player_choice do
+							puts ""
+							puts "Please enter a blank space from the board."
+							player_choice = gets.chomp.to_i
+						end
+						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						turn +=1
 					when 3
+						puts "Please choose a space."
+						self.show_board
+						player_choice = gets.chomp.to_i
+						until @board.include? player_choice do
+							puts ""
+							puts "Please enter a blank space from the board."
+							player_choice = gets.chomp.to_i
+						end
+						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						turn +=1
 					when 4
+						
 					when 5
 					when 6
 					when 7
@@ -100,9 +137,6 @@ module TicTacToe
 
 				end
 			end
-			turn += 1	
-			self.show_board
-			player_choice = gets.chomp
 		end
 		
 		#Check conditions
