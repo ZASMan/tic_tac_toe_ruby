@@ -1,7 +1,7 @@
 module TicTacToe	
 	class Game
 
-		attr_accessor :board, :player_1, :player_2, :winner
+		attr_accessor :board, :player_1, :player_2, :game_over
 
 		def initialize
 			puts 'Welcome to Tic Tac Toe... in Ruby!'
@@ -33,9 +33,7 @@ module TicTacToe
 			#Initialize the Board
 			@board = [1,2,3,4,5,6,7,8,9]
 			#Win Condition
-			@game_winner = false
-			#Draw
-			@no_winner = false
+			@game_over = false
 			#Player Symbol and Turn Order Assignment
 			self.player_assignment
 			#Begin the game
@@ -103,6 +101,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check Win
+						self.win
 						#Increment to Next Turn
 						turn += 1
 					#Player 2's Turn
@@ -120,6 +120,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to next turn
 						turn +=1
 					#Player 1's Turn
@@ -137,6 +139,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win	
 						#Increment to the next turn
 						turn +=1
 					#Player 2's Turn
@@ -154,6 +158,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 5
@@ -170,6 +176,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 6
@@ -186,6 +194,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 7
@@ -202,6 +212,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 8
@@ -218,6 +230,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 9
@@ -234,6 +248,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					end
@@ -259,6 +275,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to Next Turn
 						turn += 1
 					when 2
@@ -275,6 +293,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to next turn
 						turn +=1
 					when 3
@@ -291,6 +311,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn += 1
 					when 4
@@ -307,6 +329,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 5
@@ -323,6 +347,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 6
@@ -339,6 +365,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 7
@@ -355,6 +383,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 8
@@ -371,6 +401,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					when 9
@@ -387,6 +419,8 @@ module TicTacToe
 						end
 						#Fill the space in the game board with the player's symbol
 						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+						#Check win
+						self.win
 						#Increment to the next turn
 						turn +=1
 					end
@@ -412,7 +446,8 @@ module TicTacToe
 			#Diaganol top right to bottom left
 			@game_over = true if @board[2] == @board[4] and @board[4] == @board[6] and @board[2] == @board[6]
 			#Diaganol top left to bottom right
-			@game_over = true if @board[0] == @board[4] and @board[4] == @board[8] and @board[0] == @board[8]
+			@game_over= true if @board[0] == @board[4] and @board[4] == @board[8] and @board[0] == @board[8]
+			puts "Game is over!" if @game_over = true
 		end
 	end
 
