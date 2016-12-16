@@ -2,7 +2,7 @@ module TicTacToe
 	
 	class Game
 
-		attr_accessor :board, :player_1, :player_2
+		attr_accessor :board, :player_1, :player_2, :winner
 
 		def initialize
 			puts 'Welcome to Tic Tac Toe... in Ruby!'
@@ -34,7 +34,9 @@ module TicTacToe
 			#Initialize the Board
 			@board = [1,2,3,4,5,6,7,8,9]
 			#Win Condition
-			@game_over = false
+			@game_winner = false
+			#Draw
+			@no_winner = false
 			#Player Symbol and Turn Order Assignment
 			self.player_assignment
 			#Begin the game
@@ -85,7 +87,7 @@ module TicTacToe
 				#Starts at Turn 1
 				turn = 1
 				while turn < 10
-					break if @game_over = true
+					break if @game_over == true
 					case turn
 					#Player 1's Turn
 					when 1
@@ -405,16 +407,14 @@ module TicTacToe
 			#Three in a row first row vertical
 			@game_over = true if @board[0] == @board[3] and @board[3] == @board[6] and @board[0] == @board[6]
 			#Three in a row second row vertical
+			@game_over = true if @board[1] == @board[4] and @board[4] == @board[7] and @board[7] == @board[1]
 			#Three in a row third row vertical
-			#
+			@game_over = true if @board[2] == @board[5] and @board[5] == @board[8] and @board[8] == @board[2]
+			#Diaganol top right to bottom left
+			@game_over = true if @board[2] == @board[4] and @board[4] == @board[6] and @board[2] == @board[6]
+			#Diaganol top left to bottom right
+			@game_over = true if @board[0] == @board[4] and @board[4] == @board[8] and @board[0] == @board[8]
 		end
-
-		def tie?
-		end
-
-		def no_winner?
-		end
-
 	end
 
 	class Player
