@@ -1,9 +1,10 @@
 require 'tic_tac_toe'
 
-describe "wins/ties" do
+describe TicTacToe::Game do
 
 	before do
 		@game_1 = TicTacToe::Game.new
+		
 	end
 
 	it "sets game_over to true on a winning condition" do

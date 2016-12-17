@@ -11,7 +11,9 @@ module TicTacToe
 			puts '1) Human vs Human'
 			puts '2) Human vs Computer'
 			puts '3) Computer vs Computer'
-			player_choice = gets.chomp.to_i
+			#For Test Suite
+			player_choice = 1
+			#player_choice = gets.chomp.to_i
 			until [1,2,3].include? player_choice do
 				puts ""
 				puts 'Please enter 1, 2, or 3'
@@ -447,7 +449,7 @@ module TicTacToe
 			@game_over = true if @board[2] == @board[4] and @board[4] == @board[6] and @board[2] == @board[6]
 			#Diaganol top left to bottom right
 			@game_over= true if @board[0] == @board[4] and @board[4] == @board[8] and @board[0] == @board[8]
-			puts "Game is over!" if @game_over = true
+			puts "Game is over!" if @game_over == true
 		end
 	end
 
@@ -465,4 +467,4 @@ module TicTacToe
 
 end
 
-game_1 = TicTacToe::Game.new
+#game_1 = TicTacToe::Game.new
