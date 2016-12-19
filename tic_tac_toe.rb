@@ -24,18 +24,18 @@ module TicTacToe
 				puts ""
 				@player_1 = HumanPlayer.new
 				puts "Player 1, what is your name?"
-				@player_1.name = gets.chomp
+				@player_1.name = gets.chomp.to_s
 				puts "Welcome to Tic Tac Toe, #{@player_1.name}!"
 				@player_2 = HumanPlayer.new
 				puts ""
 				puts "Player 2, what is your name?"
-				@player_2.name = gets.chomp
+				@player_2.name = gets.chomp.to_s
 				puts "Welcome to Tic Tac Toe, #{@player_2.name}!"
 			elsif player_choice == 2
 				puts 'Human vs Computer mode chosen.'
 				@player_1 = HumanPlayer.new
 				puts "Player 1, what is your name?"
-				@player_1.name = gets.chomp
+				@player_1.name = gets.chomp.to_s
 				puts ""
 				puts "Welcome to Tic Tac Toe #{@player_1.name}!"
 				@player_2 = ComputerPlayer.new
