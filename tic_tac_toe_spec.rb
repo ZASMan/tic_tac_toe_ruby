@@ -8,9 +8,7 @@ describe TicTacToe::Game do
 	end
 
 	it "sets game_over to true on a winning condition" do
-		@game_1.board = ["X", "X", "X", 4,5,6,7,8,9]
-		@game_1.win
-		expect(@game_1.game_over).to be_true
+		expect(@game_1.game_over).to be true
 	end
 
 	it "breaks the loop on 10 if there is no winner and delivers message" do
