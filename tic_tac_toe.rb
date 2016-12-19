@@ -104,7 +104,8 @@ module TicTacToe
 				puts "Player 2 will go first."
 			end
 		end
-
+		
+		#Write logic in play_game for computer players
 		def play_game
 			#Control Flow Based on Order
 			#Player 1 First
@@ -509,7 +510,6 @@ module TicTacToe
 				@winner_symbol = @board[0]
 				@game_over = true
 			end
-			puts "Game is over!" if @game_over == true
 			#Figures out which specific player is the winner based on 
 			#The symbol in the winning space
 			players = [@player_1, @player_2]
@@ -521,6 +521,8 @@ module TicTacToe
 			#Game Over Messages
 			if @game_over == true and @winner_symbol != nil and @winning_player != nil
 				puts "Game is over! Winner is #{@winning_player.name}!"
+			elsif @game_over == true and @winner_symbol == nil and @winning_playe r== nil
+				puts "Game is over! There was no winner!"
 			end
 		end
 	

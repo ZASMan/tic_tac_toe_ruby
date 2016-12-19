@@ -7,7 +7,9 @@ describe TicTacToe::Game do
 		
 	end
 
-	it "sets game_over to true on a winning condition" do
+	it "Sets game_over and appropriate winning_player and winner_symbol if appropriate three in a row" do
+		expect(@game_1.winner_symbol).to_not be_nil
+		expect(@game_1.winning_player).to_not be_nil
 		expect(@game_1.game_over).to be true
 	end
 
