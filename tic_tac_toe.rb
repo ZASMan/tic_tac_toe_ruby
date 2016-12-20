@@ -12,8 +12,8 @@ module TicTacToe
 			puts '2) Human vs Computer'
 			puts '3) Computer vs Computer'
 			#For Test Suite
-			player_choice = 1
-			#player_choice = gets.chomp.to_i
+			#player_choice = 1
+			player_choice = gets.chomp.to_i
 			until [1,2,3].include? player_choice do
 				puts ""
 				puts 'Please enter 1, 2, or 3'
@@ -25,6 +25,7 @@ module TicTacToe
 				@player_1 = HumanPlayer.new
 				puts "Player 1, what is your name?"
 				@player_1.name = gets.chomp.to_s
+				puts "#{@player_1.class.name.to_s}"
 				puts "Welcome to Tic Tac Toe, #{@player_1.name}!"
 				@player_2 = HumanPlayer.new
 				puts ""
@@ -107,7 +108,7 @@ module TicTacToe
 		
 		#Write logic in play_game for computer players
 		def play_game
-			#Control Flow Based on Order
+			#Control Flow Based on Order and player type
 			#Player 1 First
 			if @player_1.order = 1
 				#Starts at Turn 1
@@ -117,179 +118,34 @@ module TicTacToe
 					case turn
 					#Player 1's Turn
 					when 1
-						puts "Please choose a space."
-						#Display board
-						self.show_board
-						#Take the player choice input
-						#player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						#For Test Suite
-						player_choice = 1
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check Win
-						self.win
-						#Increment to Next Turn
+						self.player_1_move
 						turn += 1
 					#Player 2's Turn
 					when 2
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						#player_choice = gets.chomp.to_i
-						#For Test Suite
-						player_choice = 5
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to next turn
+						self.player_2_move
 						turn +=1
 					#Player 1's Turn
 					when 3
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						#player_choice = gets.chomp.to_i
-						#for test suite
-						player_choice = 2
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win	
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					#Player 2's Turn
 					when 4
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						#player_choice = gets.chomp.to_i
-						#For Test Suite
-						player_choice = 4
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn +=1
 					when 5
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						#player_choice = gets.chomp.to_i
-						#For test suite
-						player_choice = 3
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					when 6
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn +=1
 					when 7
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					when 8
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn +=1
 					when 9
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					end
 				#WHILE LOOP ENDS HERE
@@ -301,173 +157,89 @@ module TicTacToe
 				while turn < 10
 					case turn
 					when 1
-						puts "Please choose a space."
-						#Display board
-						self.show_board
-						#Take the player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to Next Turn
+						self.player_2_move
 						turn += 1
 					when 2
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to next turn
+						self.player_1_move
 						turn +=1
 					when 3
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn += 1
 					when 4
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
-					when 5
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+					when 5	
+						self.player_2_move
 						turn +=1
 					when 6
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					when 7
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn +=1
 					when 8
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_1.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_1_move
 						turn +=1
 					when 9
-						puts "Please choose a space."
-						#Display Board
-						self.show_board
-						#Take player choice input
-						player_choice = gets.chomp.to_i
-						#Assure player choice is a valid number
-						until @board.include? player_choice do
-							puts ""
-							puts "Please choose a blank space (I.E. no 'X' or 'O')."
-							player_choice = gets.chomp.to_i
-						end
-						#Fill the space in the game board with the player's symbol
-						@board.map! { |space| space == player_choice ? @player_2.symbol : space}
-						#Check win
-						self.win
-						#Increment to the next turn
+						self.player_2_move
 						turn +=1
 					end
 				#WHILE LOOP ENDS HERE
 				end			
 			end
 		end
-		
+
+		def player_1_move
+			puts "#{@player_1.name}, please choose a space"
+			self.show_board
+			if @player_1.class.name == "TicTacToe::HumanPlayer"
+				player_choice = gets.chomp.to_i
+				until @board.include? player_choice do
+					puts ""
+					puts "Please choose a blank space (I.E. no 'X' or 'O' already in space)."
+					player_choice = gets.chomp.to_i
+				end
+				@board.map! {|space| space == player_choice ? @player_1.symbol : space}
+				puts "#{@player_1.name} chose #{player_choice.to_s}!"
+			elsif @player_1.class.name == "TicTacToe::ComputerPlayer"
+				player_choice = rand(1..9)
+				until @board.include? player_choice do
+					puts ""
+					puts "Space taken, choosing again."
+					player_choice = rand(1..9)
+				end
+				@board.map! { |space| space == player_choice ? @player_1.symbol : space }
+				puts "#{@player_1.name} chose #{player_choice.to_s}!"
+			end
+			self.win
+		end
+
+		def player_2_move
+			puts "#{@player_2.name}, please choose a space"
+			self.show_board
+			if @player_2.class.name == "TicTacToe::HumanPlayer"
+				player_choice = gets.chomp.to_i
+				until @board.include? player_choice do
+					 puts ""
+					 puts "Please choose a blank space (I.E. no 'X' or 'O' already in space)."
+					player_choice = gets.chomp.to_i
+				end
+				@board.map! { |space| space == player_choice ? @player_2.symbol : space}
+				puts "#{@player_2.name} chose #{player_choice.to_s}!"
+			elsif @player_2.class.name == "TicTacToe::ComputerPlayer"
+				player_choice = rand(1..9)
+				until @board.include? player_choice do
+					puts ""
+					puts "Space taken, choosing again."
+					player_choice = rand(1..9)
+				end
+				@board.map! { |space| space == player_choice ? @player_2.symbol : space }
+				puts "#{@player_2.name} chose #{player_choice.to_s}!"
+			end
+			self.win
+		end
+
+
 		#Check conditions
 		def win
 			#Three in a row top row horizontal
@@ -519,9 +291,10 @@ module TicTacToe
 				end
 			end
 			#Game Over Messages
+			self.show_board
 			if @game_over == true and @winner_symbol != nil and @winning_player != nil
 				puts "Game is over! Winner is #{@winning_player.name}!"
-			elsif @game_over == true and @winner_symbol == nil and @winning_playe r== nil
+			elsif @game_over == true and @winner_symbol == nil and @winning_player == nil
 				puts "Game is over! There was no winner!"
 			end
 		end
